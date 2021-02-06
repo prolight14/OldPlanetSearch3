@@ -1,0 +1,14 @@
+{
+  "name": "js",
+  "version": "0.0.1",
+  "description": "Planet Search 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prolight14",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^3.24.1"
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "CommonJs",
+        "outDir": "./wwwout/js/",
+        "allowJs": true,
+        "sourceMap": true
+    },
+    "include": [
+        "./www/js/**/*"
+    ],
+    "exclude": [
+        "./www/js/libraries/**/*",
+        "./www/js/node_modules/**/*",
+        "./www/js/node_modules/",
+    ]
+}
