@@ -67,6 +67,40 @@ exports.default = Player;
 
 },{}],2:[function(require,module,exports){
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var TreasureChest = /** @class */ (function (_super) {
+    __extends(TreasureChest, _super);
+    /**
+     * @param {Phaser.Scene} scene
+     * @param {number} x
+     * @param {number} y
+     * @param {string} texture
+     * @param {number | string} frame
+     */
+    function TreasureChest(scene, x, y, texture, frame) {
+        var _this = _super.call(this, scene, x, y, texture, frame) || this;
+        scene.add.existing(_this);
+        return _this;
+    }
+    return TreasureChest;
+}(Phaser.Physics.Arcade.Image));
+exports.default = TreasureChest;
+
+},{}],3:[function(require,module,exports){
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var CameraShadow = /** @class */ (function () {
     function CameraShadow(scene, cs, x, y, guide) {
@@ -93,7 +127,7 @@ var CameraShadow = /** @class */ (function () {
 }());
 exports.default = CameraShadow;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -177,7 +211,7 @@ var EnemyShip = /** @class */ (function (_super) {
 }(PhysicsSprite_js_1.default));
 exports.default = EnemyShip;
 
-},{"./PhysicsSprite.js":5}],4:[function(require,module,exports){
+},{"./PhysicsSprite.js":6}],5:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -217,7 +251,7 @@ var Nebula = /** @class */ (function (_super) {
 }(PhysicsSprite_js_1.default));
 exports.default = Nebula;
 
-},{"./PhysicsSprite.js":5}],5:[function(require,module,exports){
+},{"./PhysicsSprite.js":6}],6:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -265,7 +299,7 @@ var PhysicsSprite = /** @class */ (function (_super) {
 }(Phaser.GameObjects.Sprite));
 exports.default = PhysicsSprite;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -296,7 +330,7 @@ var Planet = /** @class */ (function (_super) {
 }(PhysicsSprite_js_1.default));
 exports.default = Planet;
 
-},{"./PhysicsSprite.js":5}],7:[function(require,module,exports){
+},{"./PhysicsSprite.js":6}],8:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -419,7 +453,7 @@ var PlayerShip = /** @class */ (function (_super) {
 }(PhysicsSprite_js_1.default));
 exports.default = PlayerShip;
 
-},{"./PhysicsSprite.js":5}],8:[function(require,module,exports){
+},{"./PhysicsSprite.js":6}],9:[function(require,module,exports){
 "use strict";
 // Title screen scenes
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -470,12 +504,12 @@ var config = {
     mobile: true
 };
 var game = new Phaser.Game(config);
-game.mobile = true;
+game.mobile = false;
 // Debug/Dev only
 // window.game = game;
 // window.config = config;
 
-},{"./scenes/planet/PlatformingScene.js":9,"./scenes/space/DebugScene.js":11,"./scenes/space/EffectsScene.js":12,"./scenes/space/MainScene.js":13,"./scenes/space/MiniMapScene.js":14,"./scenes/space/PlanetScene.js":15,"./scenes/space/StarLayer2Scene.js":16,"./scenes/space/StarLayer3Scene.js":17,"./scenes/space/StarLayer4Scene.js":18,"./scenes/space/StarLayerScene.js":19,"./scenes/space/UIDebugScene.js":20}],9:[function(require,module,exports){
+},{"./scenes/planet/PlatformingScene.js":10,"./scenes/space/DebugScene.js":12,"./scenes/space/EffectsScene.js":13,"./scenes/space/MainScene.js":14,"./scenes/space/MiniMapScene.js":15,"./scenes/space/PlanetScene.js":16,"./scenes/space/StarLayer2Scene.js":17,"./scenes/space/StarLayer3Scene.js":18,"./scenes/space/StarLayer4Scene.js":19,"./scenes/space/StarLayerScene.js":20,"./scenes/space/UIDebugScene.js":21}],10:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -492,6 +526,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Player_js_1 = require("../../GameObjects/planet/Player.js");
+var TreasureChest_js_1 = require("../../GameObjects/planet/TreasureChest.js");
 var PlatformingScene = /** @class */ (function (_super) {
     __extends(PlatformingScene, _super);
     function PlatformingScene() {
@@ -510,6 +545,7 @@ var PlatformingScene = /** @class */ (function (_super) {
         this.load.image("spike", "./assets/levels/spike.png");
         this.load.tilemapTiledJSON("level1", "./assets/levels/level1.json");
         this.load.image("player", "./assets/levels/playerBlank.png");
+        this.load.spritesheet("TreasureChest", "./assets/levels/TreasureChest.png", { frameWidth: 16, frameHeight: 16 });
     };
     PlatformingScene.prototype.create = function () {
         var _this = this;
@@ -603,6 +639,7 @@ var PlatformingScene = /** @class */ (function (_super) {
         });
         var playerSpawnPoint = tilemap.findObject("Objects", function (obj) { return obj.properties[0].value === "Player Spawn Point"; });
         this.player = new Player_js_1.default(this, playerSpawnPoint.x, playerSpawnPoint.y, "player");
+        var tc = new TreasureChest_js_1.default(this, playerSpawnPoint.x, playerSpawnPoint.y, "TreasureChest", 0);
         levelLayer.setCollisionByProperty({ collides: true });
         this.physics.world.addCollider(this.player, levelLayer);
         var camera = this.cameras.main;
@@ -631,7 +668,7 @@ var PlatformingScene = /** @class */ (function (_super) {
 }(Phaser.Scene));
 exports.default = PlatformingScene;
 
-},{"../../GameObjects/planet/Player.js":1}],10:[function(require,module,exports){
+},{"../../GameObjects/planet/Player.js":1,"../../GameObjects/planet/TreasureChest.js":2}],11:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -731,7 +768,7 @@ var BaseBackgroundScene = /** @class */ (function (_super) {
 }(Phaser.Scene));
 exports.default = BaseBackgroundScene;
 
-},{"../../GameObjects/space/CameraShadow.js":2}],11:[function(require,module,exports){
+},{"../../GameObjects/space/CameraShadow.js":3}],12:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -802,7 +839,7 @@ var DebugScene = /** @class */ (function (_super) {
 }(Phaser.Scene));
 exports.default = DebugScene;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -840,7 +877,7 @@ var EffectsScene = /** @class */ (function (_super) {
 }(Phaser.Scene));
 exports.default = EffectsScene;
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1010,6 +1047,7 @@ var MainScene = /** @class */ (function (_super) {
         this.canRotateCamera = true;
         // Same goes for this one
         this.canZoomUsingUpOrDown = true;
+        this.input.addPointer(1);
     };
     MainScene.prototype.runCameraControls = function () {
         var _this = this;
@@ -1044,6 +1082,19 @@ var MainScene = /** @class */ (function (_super) {
             this.time.delayedCall(500, function () {
                 _this.canRotateCamera = true;
             });
+        }
+        if (this.input.pointer1.isDown && this.input.pointer2.isDown) {
+            var p1 = this.input.pointer1;
+            var p2 = this.input.pointer2;
+            var dx = p1.x - p2.x;
+            var dy = p1.y - p2.y;
+            var pointerDistSq = dx * dx + dy * dy;
+            // Might get rid of XX !== undefined
+            if (this.lastPointerDistSq !== undefined) //&& this.lastPointerDistSq < pointerDistSq)
+             {
+                this.setCameraZoom(Math.max(Math.min(cam.zoom + (Math.sqrt(pointerDistSq) - Math.sqrt(this.lastPointerDistSq)) * 0.01, 1.75), 0.25));
+            }
+            this.lastPointerDistSq = pointerDistSq;
         }
     };
     MainScene.prototype.setCameraZoom = function (zoom) {
@@ -1103,7 +1154,7 @@ var MainScene = /** @class */ (function (_super) {
 }(Phaser.Scene));
 exports.default = MainScene;
 
-},{"../../GameObjects/space/CameraShadow.js":2,"../../GameObjects/space/EnemyShip.js":3,"../../GameObjects/space/Nebula.js":4,"../../GameObjects/space/PlayerShip.js":7}],14:[function(require,module,exports){
+},{"../../GameObjects/space/CameraShadow.js":3,"../../GameObjects/space/EnemyShip.js":4,"../../GameObjects/space/Nebula.js":5,"../../GameObjects/space/PlayerShip.js":8}],15:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1240,7 +1291,7 @@ var MiniMapScene = /** @class */ (function (_super) {
 }(Phaser.Scene));
 exports.default = MiniMapScene;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1289,7 +1340,7 @@ var PlanetScene = /** @class */ (function (_super) {
 }(BaseBackgroundScene_js_1.default));
 exports.default = PlanetScene;
 
-},{"../../GameObjects/space/Planet.js":6,"./BaseBackgroundScene.js":10}],16:[function(require,module,exports){
+},{"../../GameObjects/space/Planet.js":7,"./BaseBackgroundScene.js":11}],17:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1402,7 +1453,7 @@ var StarLayer2Scene = /** @class */ (function (_super) {
 }(Phaser.Scene));
 exports.default = StarLayer2Scene;
 
-},{"../../GameObjects/space/CameraShadow.js":2}],17:[function(require,module,exports){
+},{"../../GameObjects/space/CameraShadow.js":3}],18:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1471,7 +1522,7 @@ var StarLayer3Scene = /** @class */ (function (_super) {
 }(BaseBackgroundScene_js_1.default));
 exports.default = StarLayer3Scene;
 
-},{"./BaseBackgroundScene.js":10}],18:[function(require,module,exports){
+},{"./BaseBackgroundScene.js":11}],19:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1540,7 +1591,7 @@ var StarLayer4Scene = /** @class */ (function (_super) {
 }(BaseBackgroundScene_js_1.default));
 exports.default = StarLayer4Scene;
 
-},{"./BaseBackgroundScene.js":10}],19:[function(require,module,exports){
+},{"./BaseBackgroundScene.js":11}],20:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1608,7 +1659,7 @@ var StarLayerScene = /** @class */ (function (_super) {
 }(BaseBackgroundScene_js_1.default));
 exports.default = StarLayerScene;
 
-},{"./BaseBackgroundScene.js":10}],20:[function(require,module,exports){
+},{"./BaseBackgroundScene.js":11}],21:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1659,4 +1710,4 @@ var UIDebugScene = /** @class */ (function (_super) {
 }(Phaser.Scene));
 exports.default = UIDebugScene;
 
-},{}]},{},[8]);
+},{}]},{},[9]);

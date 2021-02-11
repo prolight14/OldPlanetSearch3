@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Player_js_1 = require("../../GameObjects/planet/Player.js");
+var TreasureChest_js_1 = require("../../GameObjects/planet/TreasureChest.js");
 var PlatformingScene = /** @class */ (function (_super) {
     __extends(PlatformingScene, _super);
     function PlatformingScene() {
@@ -32,6 +33,7 @@ var PlatformingScene = /** @class */ (function (_super) {
         this.load.image("spike", "./assets/levels/spike.png");
         this.load.tilemapTiledJSON("level1", "./assets/levels/level1.json");
         this.load.image("player", "./assets/levels/playerBlank.png");
+        this.load.spritesheet("TreasureChest", "./assets/levels/TreasureChest.png", { frameWidth: 16, frameHeight: 16 });
     };
     PlatformingScene.prototype.create = function () {
         var _this = this;
@@ -125,6 +127,7 @@ var PlatformingScene = /** @class */ (function (_super) {
         });
         var playerSpawnPoint = tilemap.findObject("Objects", function (obj) { return obj.properties[0].value === "Player Spawn Point"; });
         this.player = new Player_js_1.default(this, playerSpawnPoint.x, playerSpawnPoint.y, "player");
+        var tc = new TreasureChest_js_1.default(this, playerSpawnPoint.x, playerSpawnPoint.y, "TreasureChest", 0);
         levelLayer.setCollisionByProperty({ collides: true });
         this.physics.world.addCollider(this.player, levelLayer);
         var camera = this.cameras.main;

@@ -57,7 +57,7 @@ var config = {
 
 var game = new Phaser.Game(config);
 
-game.mobile = false;
+game.mobile = true;
 
 // Debug/Dev only
 // window.game = game;

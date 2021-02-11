@@ -167,6 +167,7 @@ var MainScene = /** @class */ (function (_super) {
         this.canRotateCamera = true;
         // Same goes for this one
         this.canZoomUsingUpOrDown = true;
+        this.input.addPointer(1);
     };
     MainScene.prototype.runCameraControls = function () {
         var _this = this;
@@ -201,6 +202,19 @@ var MainScene = /** @class */ (function (_super) {
             this.time.delayedCall(500, function () {
                 _this.canRotateCamera = true;
             });
+        }
+        if (this.input.pointer1.isDown && this.input.pointer2.isDown) {
+            var p1 = this.input.pointer1;
+            var p2 = this.input.pointer2;
+            var dx = p1.x - p2.x;
+            var dy = p1.y - p2.y;
+            var pointerDistSq = dx * dx + dy * dy;
+            // Might get rid of XX !== undefined
+            if (this.lastPointerDistSq !== undefined) //&& this.lastPointerDistSq < pointerDistSq)
+             {
+                this.setCameraZoom(Math.max(Math.min(cam.zoom + (Math.sqrt(pointerDistSq) - Math.sqrt(this.lastPointerDistSq)) * 0.01, 1.75), 0.25));
+            }
+            this.lastPointerDistSq = pointerDistSq;
         }
     };
     MainScene.prototype.setCameraZoom = function (zoom) {
